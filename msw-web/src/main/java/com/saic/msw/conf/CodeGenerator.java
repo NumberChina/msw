@@ -23,6 +23,8 @@ import java.util.ResourceBundle;
 @Slf4j
 public class CodeGenerator {
 
+    public static String[] TABLES = new String[]{"t_user"};
+
     public static String API_PATH = "msw-api/src/main/java/com/saic/msw/api/";
     public static String COMMON_PATH = "msw-common";
     public static String DAO_PATH = "msw-dao/src/main/java/com/saic/msw/mapper/";
@@ -72,7 +74,7 @@ public class CodeGenerator {
         /** 表名生成策略*/
         strategy.setNaming(NamingStrategy.underline_to_camel);
         /** 需要生成的表*/
-        strategy.setInclude(new String[]{"t_demo"});
+        strategy.setInclude(TABLES);
         mpg.setStrategy(strategy);
 
         // 包配置
