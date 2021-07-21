@@ -3,6 +3,7 @@ package com.saic.msw;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * @author: zzz
@@ -12,6 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 
 @SpringBootApplication
+@EnableTransactionManagement
 @MapperScan("com.saic.msw.mapper")
 public class Application {
     public static void main(String[] args) {

@@ -17,6 +17,13 @@ import java.util.Scanner;
  */
 public class GeneratorCodeConfig {
 
+    public static String API_PATH = "msw-api";
+    public static String COMMON_PATH = "msw-common";
+    public static String DAO_PATH = "msw-dao";
+    public static String MODEL_PATH = "msw-model";
+    public static String SERVICE_PATH = "msw-service";
+    public static String WEB_PATH = "msw-web";
+
 
     public static String scanner(String tip) {
         Scanner scanner = new Scanner(System.in);
@@ -40,7 +47,7 @@ public class GeneratorCodeConfig {
         GlobalConfig gc = new GlobalConfig();
         String projectPath = System.getProperty("user.dir");
         gc.setOutputDir(projectPath + "/src/main/java");
-        gc.setAuthor("astupidcoder");
+        gc.setAuthor("zzz");
         gc.setOpen(false);
         //实体属性 Swagger2 注解
         gc.setSwagger2(false);
