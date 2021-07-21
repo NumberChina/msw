@@ -45,7 +45,7 @@ public class CodeGenerator {
         AutoGenerator mpg = new AutoGenerator();
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
-       /* gc.setOutputDir(projectPath + "/src/main/java");*/
+        gc.setOutputDir("/GeneratorTemp");
         gc.setFileOverride(false);
         // 开启 activeRecord 模式
         gc.setActiveRecord(true);
