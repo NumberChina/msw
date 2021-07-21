@@ -1,6 +1,6 @@
 package com.saic.msw.mapper;
 
-import com.saic.msw.model.TUser;
+import com.saic.msw.model.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author zzz
  * @since 2021-07-21
  */
-public interface TUserMapper extends BaseMapper<TUser> {
+public interface UserMapper extends BaseMapper<User> {
 
 }

@@ -1,16 +1,13 @@
 package com.saic.msw.controller;
 
 
-import com.saic.msw.api.ITUserService;
+import com.saic.msw.api.IUserService;
 import com.saic.msw.dto.ApiReqDto;
 import com.saic.msw.dto.ApiResultDto;
-import com.saic.msw.dto.DemoDto;
-import com.saic.msw.model.TUser;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.saic.msw.model.User;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -24,21 +21,22 @@ import javax.annotation.Resource;
  * @since 2021-07-21
  */
 @RestController
-@RequestMapping("/tUser")
-public class TUserController {
+@RequestMapping("/user")
+public class UserController {
+
 
     @Resource
-    private ITUserService iTUserService;
+    private IUserService iTUserService;
 
     @RequestMapping("findByUser")
-    public ApiResultDto findByiId(@RequestBody ApiReqDto<TUser> apiReqDto) {
-        TUser tUser =  iTUserService.findById(apiReqDto.getParams().getId());
+    public ApiResultDto findByiId(@RequestBody ApiReqDto<User> apiReqDto) {
+        User tUser =  iTUserService.findById(apiReqDto.getParams().getId());
         return ApiResultDto.success(tUser);
     }
 
     @RequestMapping("findById")
     public ApiResultDto findById(Integer id) {
-        TUser tUser = iTUserService.findById(id);
+        User tUser = iTUserService.findById(id);
         return ApiResultDto.success(tUser);
     }
 

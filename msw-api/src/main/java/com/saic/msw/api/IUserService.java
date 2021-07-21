@@ -1,6 +1,6 @@
 package com.saic.msw.api;
 
-import com.saic.msw.model.TUser;
+import com.saic.msw.model.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -11,8 +11,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author zzz
  * @since 2021-07-21
  */
-public interface ITUserService extends IService<TUser> {
+public interface IUserService extends IService<User> {
 
-   TUser findById(Integer id);
+    User findById(Integer id);
 
 }
