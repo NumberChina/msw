@@ -1,5 +1,6 @@
 package com.saic.msw.model;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -13,7 +14,8 @@ import java.io.Serializable;
  * @author zzz
  * @since 2021-07-21
  */
-public class TUser extends Model<TUser> {
+@TableName("t_user")
+public class User extends Model<User> {
 
     private static final long serialVersionUID=1L;
 
@@ -56,7 +58,7 @@ public class TUser extends Model<TUser> {
 
     @Override
     public String toString() {
-        return "TUser{" +
+        return "User{" +
         "id=" + id +
         ", code=" + code +
         ", name=" + name +
