@@ -19,7 +19,7 @@ public class ApiResultDto<T> {
         ApiResultDto resultDto = new ApiResultDto();
         resultDto.code = ResponseEnum.SUCCESS.getCode();
         resultDto.msg = ResponseEnum.SUCCESS.getMsg();
-       return new ApiResultDto();
+       return resultDto;
     }
 
     public static <T> ApiResultDto success(T data){
@@ -27,20 +27,20 @@ public class ApiResultDto<T> {
         resultDto.code = ResponseEnum.SUCCESS.getCode();
         resultDto.msg = ResponseEnum.SUCCESS.getMsg();
         resultDto.data = data;
-        return new ApiResultDto();
+        return resultDto;
     }
 
     public static ApiResultDto error(){
         ApiResultDto resultDto = new ApiResultDto();
         resultDto.code = ResponseEnum.ERROR.getCode();
         resultDto.msg = ResponseEnum.ERROR.getMsg();
-        return new ApiResultDto();
+        return resultDto;
     }
 
     public static ApiResultDto error(String msg){
         ApiResultDto resultDto = new ApiResultDto();
         resultDto.code = ResponseEnum.ERROR.getCode();
         resultDto.msg = msg;
-        return new ApiResultDto();
+        return  resultDto;
     }
 }

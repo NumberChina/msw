@@ -24,8 +24,8 @@ import java.util.ResourceBundle;
  */
 @Slf4j
 public class CodeGenerator {
-
     public static String[] TABLES = new String[]{"t_user"};
+    public static String[] TABLES_PREFIX = new String[]{"t_"};
 
     public static String API_PATH = "/msw-api/src/main/java/com/saic/msw/api/";
     public static String COMMON_PATH = "/msw-common";
@@ -72,7 +72,7 @@ public class CodeGenerator {
         // 策略配置
         StrategyConfig strategy = new StrategyConfig();
         /** 此处可以修改为您的表前缀，如果没有，注释掉即可*/
-        //strategy.setTablePrefix(new String[] { "t_" });
+        strategy.setTablePrefix(TABLES_PREFIX);
         /** 表名生成策略*/
         strategy.setNaming(NamingStrategy.underline_to_camel);
         /** 需要生成的表*/
