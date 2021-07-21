@@ -7,9 +7,11 @@ import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.converts.MySqlTypeConvert;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
+import com.baomidou.mybatisplus.generator.config.rules.FileType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import lombok.extern.slf4j.Slf4j;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -25,13 +27,13 @@ public class CodeGenerator {
 
     public static String[] TABLES = new String[]{"t_user"};
 
-    public static String API_PATH = "msw-api/src/main/java/com/saic/msw/api/";
-    public static String COMMON_PATH = "msw-common";
-    public static String DAO_PATH = "msw-dao/src/main/java/com/saic/msw/mapper/";
-    public static String DAO_PATH_XML = "msw-dao/src/main/resources/com/saic/msw/mapper/";
-    public static String MODEL_PATH = "msw-model/src/main/java/com/saic/msw/model/";
-    public static String SERVICE_PATH = "msw-service/src/main/java/com/saic/msw/service/";
-    public static String WEB_PATH = "msw-web/src/main/java/com/saic/msw/controller/";
+    public static String API_PATH = "/msw-api/src/main/java/com/saic/msw/api/";
+    public static String COMMON_PATH = "/msw-common";
+    public static String DAO_PATH = "/msw-dao/src/main/java/com/saic/msw/mapper/";
+    public static String DAO_PATH_XML = "/msw-dao/src/main/resources/com/saic/msw/mapper/";
+    public static String MODEL_PATH = "/msw-model/src/main/java/com/saic/msw/model/";
+    public static String SERVICE_PATH = "/msw-service/src/main/java/com/saic/msw/service/";
+    public static String WEB_PATH = "/msw-web/src/main/java/com/saic/msw/controller/";
 
     public static void main(String[] args) throws InterruptedException {
         //项目根目录  不可修改
@@ -43,8 +45,8 @@ public class CodeGenerator {
         AutoGenerator mpg = new AutoGenerator();
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
-        gc.setOutputDir(projectPath + "/src/main/java");
-        gc.setFileOverride(true);
+       /* gc.setOutputDir(projectPath + "/src/main/java");*/
+        gc.setFileOverride(false);
         // 开启 activeRecord 模式
         gc.setActiveRecord(true);
         // XML 二级缓存
@@ -94,8 +96,23 @@ public class CodeGenerator {
             }
         };
 
-        List<FileOutConfig> focList = new ArrayList<FileOutConfig>();
+        cfg.setFileCreate((configBuilder, fileType, filePath) -> {
+            //如果是Entity则直接返回true表示写文件
+            if (fileType == FileType.ENTITY) {
+                return true;
+            }
+            //否则先判断文件是否存在
+            File file = new File(filePath);
+            boolean exist = file.exists();
+            if (!exist) {
+                file.getParentFile().mkdirs();
+            }
+            //文件不存在或者全局配置的fileOverride为true才写文件
+            return !exist || configBuilder.getGlobalConfig().isFileOverride();
+        });
 
+
+        List<FileOutConfig> focList = new ArrayList<FileOutConfig>();
         //调整 controller java 生成目录
         focList.add(new FileOutConfig("/templates/controller.java.vm") {
             @Override
@@ -124,7 +141,7 @@ public class CodeGenerator {
         focList.add(new FileOutConfig("/templates/serviceImpl.java.vm") {
             @Override
             public String outputFile(TableInfo tableInfo) {
-                return projectPath+ SERVICE_PATH + tableInfo.getEntityName() + "Service.java";
+                return projectPath+ SERVICE_PATH + tableInfo.getEntityName() + "ServiceImpl.java";
             }
         });
 
