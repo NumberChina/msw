@@ -79,9 +79,9 @@ public class CodeGenerator {
         PackageConfig pc = new PackageConfig();
         pc.setParent(rb.getString("parent"));
         pc.setController("controller");
-        pc.setService("service");
-        pc.setServiceImpl("service.impl");
-        pc.setEntity("entity");
+        pc.setService("api");
+        pc.setServiceImpl("service");
+        pc.setEntity("model");
         pc.setMapper("mapper");
         mpg.setPackageInfo(pc);
 
