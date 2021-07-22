@@ -1,9 +1,7 @@
 package com.saic.msw.model;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
-import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 
 /**
@@ -12,19 +10,18 @@ import java.io.Serializable;
  * </p>
  *
  * @author zzz
- * @since 2021-07-21
+ * @since 2021-07-22
  */
-@TableName("t_user")
-public class User extends Model<User> {
+@TableName("t_demo")
+public class Demo extends Model<Demo> {
 
     private static final long serialVersionUID=1L;
 
-    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    private String code;
-
     private String name;
+
+    private String sex;
 
 
     public Integer getId() {
@@ -35,20 +32,20 @@ public class User extends Model<User> {
         this.id = id;
     }
 
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 
     @Override
@@ -58,10 +55,10 @@ public class User extends Model<User> {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "Demo{" +
         "id=" + id +
-        ", code=" + code +
         ", name=" + name +
+        ", sex=" + sex +
         "}";
     }
 }

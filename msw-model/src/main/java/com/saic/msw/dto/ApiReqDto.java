@@ -15,8 +15,8 @@ public class ApiReqDto<T> implements Serializable {
 
     private T params;
 
-    private UserLoginDto userLoginDto;
+    private UserLoginDto userLoginDto = new UserLoginDto();
 
-    private PageDto pageDto;
+    private PageDto pageDto = new PageDto();
 
 }

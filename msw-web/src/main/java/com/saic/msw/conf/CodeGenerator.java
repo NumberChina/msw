@@ -24,7 +24,7 @@ import java.util.ResourceBundle;
  */
 @Slf4j
 public class CodeGenerator {
-    public static String[] TABLES = new String[]{"t_test"};
+    public static String[] TABLES = new String[]{"t_demo"};
     public static String[] TABLES_PREFIX = new String[]{"t_"};
 
     public static String API_PATH = "/msw-api/src/main/java/com/saic/msw/api/";

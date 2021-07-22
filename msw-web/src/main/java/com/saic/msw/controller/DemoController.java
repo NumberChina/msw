@@ -1,7 +1,7 @@
-package ${package.Controller};
+package com.saic.msw.controller;
 
-import ${package.Service}.${table.serviceName};
-import ${package.Entity}.${entity};
+import com.saic.msw.api.IDemoService;
+import com.saic.msw.model.Demo;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.saic.msw.dto.ApiReqDto;
@@ -15,18 +15,18 @@ import java.util.List;
 
 /**
  * <p>
- *  ${entity}前端控制器  RestController注解 将结果以JSON形式返回
+ *  Demo前端控制器  RestController注解 将结果以JSON形式返回
  * </p>
  *
  * @author leilei
- * @since ${date}
+ * @since 2021-07-22
  */
 @RestController
-@RequestMapping("${table.entityPath}")
-public class ${entity}Controller {
+@RequestMapping("demo")
+public class DemoController {
 
     @Autowired
-    public ${table.serviceName} ${table.entityPath}Service;
+    public IDemoService demoService;
 
     /**
      * 保存修改公用
@@ -34,19 +34,18 @@ public class ${entity}Controller {
      * @return ApiResultDto
      */
     @RequestMapping("/save")
-    public ApiResultDto save(@RequestBody ApiReqDto<${entity}> reqDto) {
-        ${table.entityPath}Service.updateById(reqDto.getParams());
+    public ApiResultDto save(@RequestBody ApiReqDto<Demo> reqDto) {
+        demoService.updateById(reqDto.getParams());
         return ApiResultDto.success();
     }
 
-    /**
-     * 批量删除 支持POST GET
+    /**批量删除 支持POST GET
      * @param reqDto Long 类型 List 集合
      * @return ApiResultDto
      */
     @RequestMapping("remove")
     public ApiResultDto delete(@RequestBody ApiReqDto<List<Long>> reqDto) {
-        ${table.entityPath}Service.removeByIds(reqDto.getParams());
+        demoService.removeByIds(reqDto.getParams());
         return ApiResultDto.success();
     }
 
@@ -58,20 +57,18 @@ public class ${entity}Controller {
      */
     @RequestMapping("findOne")
     public ApiResultDto findOne(@RequestBody ApiReqDto<Long> reqDto) {
-        ${entity} ${table.entityPath} = ${table.entityPath}Service.getById(reqDto.getParams());
-        return ApiResultDto.success(${table.entityPath});
+        Demo demo = demoService.getById(reqDto.getParams());
+        return ApiResultDto.success(demo);
     }
 
 
-    /**
-     *
-     * 分页查询
+    /** 分页查询
      * @param reqDto
      * @return ApiResultDto
      */
     @RequestMapping("queryPage")
-    public ApiResultDto findAll(@RequestBody ApiReqDto<${entity}> reqDto) {
-        Page<${entity}> page = ${table.entityPath}Service.queryPage(reqDto);
+    public ApiResultDto findAll(@RequestBody ApiReqDto<Demo> reqDto) {
+        Page<Demo> page = demoService.queryPage(reqDto);
         return ApiResultDto.success(page);
     }
 }
