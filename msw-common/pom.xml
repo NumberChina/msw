@@ -25,35 +25,9 @@
         </dependency>
 
         <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-extension</artifactId>
-            <version>3.3.1.tmp</version>
-            <scope>compile</scope>
-        </dependency>
-
-        <dependency>
             <groupId>org.sonatype.aether</groupId>
             <artifactId>aether-impl</artifactId>
             <version>1.7</version>
-        </dependency>
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-annotation</artifactId>
-            <version>3.3.1.tmp</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-extension</artifactId>
-            <version>3.3.1.tmp</version>
-            <scope>compile</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-core</artifactId>
-            <version>3.3.1.tmp</version>
-            <scope>compile</scope>
         </dependency>
 
     </dependencies>
