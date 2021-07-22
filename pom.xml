@@ -15,7 +15,6 @@
   <modules>
     <module>msw-common</module>
     <module>msw-web</module>
-    <module>msw-web</module>
     <module>msw-dao</module>
     <module>msw-service</module>
     <module>msw-model</module>
