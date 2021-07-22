@@ -64,6 +64,17 @@ public class ${entity}Controller {
 
 
     /**
+    * 查询所有
+    * @param
+    * @return
+    */
+    @RequestMapping("queryList")
+    public ApiResultDto queryList() {
+        List<${entity}> list = ${table.entityPath}Service..list();
+        return ApiResultDto.success(list);
+    }
+
+    /**
      *
      * 分页查询
      * @param reqDto

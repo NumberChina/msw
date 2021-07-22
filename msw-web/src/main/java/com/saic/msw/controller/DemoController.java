@@ -61,6 +61,17 @@ public class DemoController {
         return ApiResultDto.success(demo);
     }
 
+    /**
+     * 查询所有
+     * @param
+     * @return
+     */
+    @RequestMapping("queryList")
+    public ApiResultDto queryList() {
+        List<Demo> page = demoService.list();
+        return ApiResultDto.success(page);
+    }
+
 
     /** 分页查询
      * @param reqDto
