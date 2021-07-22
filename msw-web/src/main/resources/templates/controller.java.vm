@@ -29,11 +29,11 @@ public class ${entity}Controller {
     public ${table.serviceName} ${table.entityPath}Service;
 
     /**
-     * 保存修改公用 POST请求方式
+     * 保存修改公用
      * @param ${table.entityPath} 修改或保存的对象
      * @return JsonReturn
      */
-    @PostMapping("/save")
+    @RequestMapping("/save")
     public ApiResultDto save(@RequestBody ApiReqDto<${entity}> reqDto) {
         ${table.entityPath}Service.updateById(reqDto.getParams());
         return ApiResultDto.success();
@@ -62,29 +62,14 @@ public class ${entity}Controller {
     }
 
 
-    /**查询所有 支持POST GET ,未传当前页以及分页长度 则默认1页 10条数据
+    /** 分页查询
      * @param pageNum 当前页
      * @param pageSize 每页最大数据数
      * @return JsonReturn
      */
-    @RequestMapping("findAll")
+    @RequestMapping("queryPage")
     public ApiResultDto findAll(@RequestBody ApiReqDto<${entity}> reqDto) {
-
-        if (pageNum != null && pageSize != null) {
-            try {
-                Page<${entity}> page = ${table.entityPath}Service.page(new Page<${entity}>(pageNum, pageSize));
-                return JsonReturn.buildSuccess(page, "操作成功");
-            } catch (Exception e) {
-                e.printStackTrace();
-                return JsonReturn.buildFailure("操作失败" + e.getMessage());
-            }
-        }
-        try {
-            Page<${entity}> page = ${table.entityPath}Service.page(new Page<>());
-            return JsonReturn.buildSuccess(page, "操作成功");
-        } catch (Exception e) {
-            e.printStackTrace();
-            return JsonReturn.buildFailure("操作失败" + e.getMessage());
-        }
+        Page<${entity}> page = ${table.entityPath}Service.queryPage(reqDto);
+        return ApiResultDto.success(page);
     }
 }

@@ -3,6 +3,8 @@ package com.saic.msw.dto;
 import com.saic.msw.enums.ResponseEnum;
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * @author: zzz
  * @date 2021/7/20 22:13
@@ -10,7 +12,7 @@ import lombok.Data;
  * @version: 1.0
  */
 @Data
-public class ApiResultDto<T> {
+public class ApiResultDto<T> implements Serializable {
     private Integer code;
     private String msg;
     private T data;
