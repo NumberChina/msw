@@ -18,7 +18,7 @@ import java.util.List;
  *  ${entity}前端控制器  RestController注解 将结果以JSON形式返回
  * </p>
  *
- * @author leilei
+ * @author ${author}
  * @since ${date}
  */
 @RestController
