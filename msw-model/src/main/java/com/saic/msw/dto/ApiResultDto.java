@@ -45,4 +45,11 @@ public class ApiResultDto<T> implements Serializable {
         resultDto.msg = msg;
         return  resultDto;
     }
+
+    public static ApiResultDto error(Integer code,String msg){
+        ApiResultDto resultDto = new ApiResultDto();
+        resultDto.code = code;
+        resultDto.msg = msg;
+        return  resultDto;
+    }
 }

@@ -1,5 +1,6 @@
 package com.saic.msw.controller;
 
+import com.saic.msw.annotation.NoLogin;
 import com.saic.msw.api.IDemoService;
 import com.saic.msw.model.Demo;
 
@@ -56,6 +57,7 @@ public class DemoController {
      * @return ApiResultDto
      */
     @RequestMapping("findOne")
+    @NoLogin
     public ApiResultDto findOne(@RequestBody ApiReqDto<Long> reqDto) {
         Demo demo = demoService.getById(reqDto.getParams());
         return ApiResultDto.success(demo);
@@ -67,6 +69,7 @@ public class DemoController {
      * @return
      */
     @RequestMapping("queryList")
+    @NoLogin
     public ApiResultDto queryList() {
         List<Demo> page = demoService.list();
         return ApiResultDto.success(page);
