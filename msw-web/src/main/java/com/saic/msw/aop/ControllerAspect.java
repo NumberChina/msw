@@ -38,10 +38,6 @@ public class ControllerAspect {
     @Pointcut("execution(public * com.saic.msw.controller.*.*(..))")
     public void pointcut(){}
 
-  /*  @Before("pointcut()")
-    public void doBefore(JoinPoint joinPoint){
-    }
-*/
     /**
      * @param proceedingJoinPoint
      * @return
@@ -73,9 +69,8 @@ public class ControllerAspect {
         return Cache.checkCacheName(token);
     }
 
-    public boolean replaceToken(String token){
+    public void replaceToken(String token){
         Cache.putSynDate(token,Cache.CACHE_HOLD_TIME_30M);
-        return true;
     }
 
 
