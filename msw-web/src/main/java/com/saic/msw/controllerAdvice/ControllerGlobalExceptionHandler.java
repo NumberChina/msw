@@ -19,17 +19,18 @@ import java.util.List;
 @ControllerAdvice
 public class ControllerGlobalExceptionHandler {
 
+
     @ResponseBody
     @ExceptionHandler(RuntimeException.class)
     public ApiResultDto runtimeExceptionHandle(RuntimeException exception) {
-        log.error("请求失败，请稍后再试", exception.getMessage(),exception);
+        log.error(MessageConstants.REQ_ERROR_MSG, exception.getMessage(),exception);
         String msg;
         if(ObjectUtil.isNotNull(exception.getCause())){
             msg = exception.getCause().toString();
         }else{
             msg = exception.getMessage();
         }
-        return ApiResultDto.error(msg.length()>150?"请求失败，请稍后再试！":msg);
+        return ApiResultDto.error(msg.length()>150?MessageConstants.REQ_ERROR_MSG:msg);
     }
 
     @ResponseBody
@@ -53,16 +54,16 @@ public class ControllerGlobalExceptionHandler {
     @ResponseBody
     @ExceptionHandler(IllegalArgumentException.class)
     public ApiResultDto handleIllegalArgumentExceptionException(IllegalArgumentException e){
-        log.error("请求失败，请稍后再试", e.getMessage(),e);
+        log.error(MessageConstants.REQ_ERROR_MSG, e.getMessage(),e);
         String msg = e.getMessage();
-        return ApiResultDto.error(msg.length()>150?"请求失败，请稍后再试！":msg);
+        return ApiResultDto.error(msg.length()>150?MessageConstants.REQ_ERROR_MSG:msg);
     }
 
     @ResponseBody
     @ExceptionHandler(Exception.class)
     public ApiResultDto exceptionHandle(Exception exception) {
-        log.error("请求失败：未知错误", exception.getMessage(),exception);
-        return ApiResultDto.error("请求失败：未知错误");
+        log.error(MessageConstants.REQ_ERROR_MSG, exception.getMessage(),exception);
+        return ApiResultDto.error(MessageConstants.REQ_ERROR_MSG);
     }
 
     @ResponseBody

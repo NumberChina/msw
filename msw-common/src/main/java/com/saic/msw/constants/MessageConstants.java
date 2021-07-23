@@ -13,4 +13,5 @@ public class MessageConstants {
     public final static String NO_LOGIN_MSG = "请登录";
 
     public final static String PARAMS_MSG = "参数异常";
+    public final static String REQ_ERROR_MSG = "请求失败，请稍后再试";
 }
