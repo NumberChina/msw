@@ -20,8 +20,8 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 -- Table structure for t_user
 -- ----------------------------
-DROP TABLE IF EXISTS `t_user`;
-CREATE TABLE `t_user`  (
+DROP TABLE IF EXISTS `t_demo`;
+CREATE TABLE `t_demo`  (
                            `id` int(0) NOT NULL AUTO_INCREMENT,
                            `code` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
                            `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
