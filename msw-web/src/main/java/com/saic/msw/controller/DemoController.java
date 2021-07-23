@@ -34,7 +34,7 @@ public class DemoController {
      * @param reqDto 修改或保存的对象
      * @return ApiResultDto
      */
-    @RequestMapping("/save")
+    @RequestMapping("save")
     public ApiResultDto save(@RequestBody ApiReqDto<Demo> reqDto) {
         demoService.updateById(reqDto.getParams());
         return ApiResultDto.success();

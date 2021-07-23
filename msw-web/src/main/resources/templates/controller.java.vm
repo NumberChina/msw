@@ -33,7 +33,7 @@ public class ${entity}Controller {
      * @param reqDto 修改或保存的对象
      * @return ApiResultDto
      */
-    @RequestMapping("/save")
+    @RequestMapping("save")
     public ApiResultDto save(@RequestBody ApiReqDto<${entity}> reqDto) {
         ${table.entityPath}Service.updateById(reqDto.getParams());
         return ApiResultDto.success();
